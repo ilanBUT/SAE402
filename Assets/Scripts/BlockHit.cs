@@ -11,6 +11,11 @@ public class BlockHit : MonoBehaviour
     [SerializeField]
     private int maxHits = 2;
  
+    [SerializeField]
+    private bool isHidden = false;
+ 
+    private PlatformEffector2D pe2d;
+ 
     private int currentHits = 0;
  
     private bool isAnimating = false;
@@ -22,6 +27,17 @@ public class BlockHit : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        pe2d = GetComponent<PlatformEffector2D>();
+ 
+        if (isHidden)
+        {
+            pe2d.enabled = true;
+            sr.color = Color.clear;
+        } else
+        {
+            pe2d.enabled = false;
+            sr.color = Color.white;
+        }
     }
  
     void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +53,8 @@ public class BlockHit : MonoBehaviour
         {
             currentHits = currentHits + 1;
             animator.SetTrigger("Hit");
+            pe2d.enabled = false;
+            sr.color = Color.white;
  
             if (itemPrefab != null)
             {
@@ -66,5 +84,4 @@ public class BlockHit : MonoBehaviour
         isAnimating = false;
     }
 }
- 
  
