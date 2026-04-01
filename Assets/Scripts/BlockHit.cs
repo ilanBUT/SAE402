@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
  
 public class BlockHit : MonoBehaviour
@@ -11,7 +12,9 @@ public class BlockHit : MonoBehaviour
     private int maxHits = 2;
  
     private int currentHits = 0;
-
+ 
+    private bool isAnimating = false;
+ 
     [SerializeField]
     private GameObject itemPrefab;
  
@@ -19,8 +22,6 @@ public class BlockHit : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
- 
-        
     }
  
     void OnCollisionEnter2D(Collision2D collision)
@@ -32,16 +33,14 @@ public class BlockHit : MonoBehaviour
  
         ContactPoint2D contact = collision.GetContact(0);
  
-        if (contact.normal.y > 0.5f && currentHits < maxHits)
+        if (contact.normal.y > 0.5f && currentHits < maxHits && !isAnimating)
         {
             currentHits = currentHits + 1;
             animator.SetTrigger("Hit");
-
-            if(itemPrefab != null)
+ 
+            if (itemPrefab != null)
             {
-                GameObject item = Instantiate(itemPrefab, 
-                transform.position + Vector3.up, 
-                Quaternion.identity);
+                StartCoroutine(Hit());
             }
  
             if (currentHits == maxHits)
@@ -49,5 +48,21 @@ public class BlockHit : MonoBehaviour
                 sr.color = new Color(1f, 1f, 1f, 0.5f);
             }
         }
+    }
+ 
+    IEnumerator Hit()
+    {
+        isAnimating = true;
+        GameObject item = Instantiate(
+            itemPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+        Collectible collectible = item.GetComponent<Collectible>();
+        yield return item.transform.MoveBackAndForth(
+            item.transform.localPosition + Vector3.up * 1.5f
+        );
+        collectible.Picked();
+        isAnimating = false;
     }
 }
