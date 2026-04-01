@@ -11,6 +11,9 @@ public class BlockHit : MonoBehaviour
     private int maxHits = 2;
  
     private int currentHits = 0;
+
+    [SerializeField]
+    private GameObject itemPrefab;
  
     void Awake()
     {
@@ -33,6 +36,13 @@ public class BlockHit : MonoBehaviour
         {
             currentHits = currentHits + 1;
             animator.SetTrigger("Hit");
+
+            if(itemPrefab != null)
+            {
+                GameObject item = Instantiate(itemPrefab, 
+                transform.position + Vector3.up, 
+                Quaternion.identity);
+            }
  
             if (currentHits == maxHits)
             {

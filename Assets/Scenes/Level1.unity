@@ -28194,6 +28194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1ac0bb206edea4ea120c8bf279451f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxHits: 2
+  itemPrefab: {fileID: 6722714434073853403, guid: 3a535e80d5f7cab42aa945a6a87c152f, type: 3}
 --- !u!95 &712374360
 Animator:
   serializedVersion: 7
