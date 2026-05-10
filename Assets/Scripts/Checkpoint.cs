@@ -3,6 +3,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public BoxCollider2D bc2d;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -11,7 +12,10 @@ public class Checkpoint : MonoBehaviour
             if (playerSpawn != null)
             {
                 playerSpawn.currentSpawnPosition = transform.position;
+                
                 bc2d.enabled = false;
+                
+                GetComponent<Animator>().SetTrigger("Activate");
             }
         }
     }

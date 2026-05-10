@@ -19,6 +19,9 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Broadcast event channels")]
     public VoidEventChannel onPlayerDeath;
+    
+    [Header("UI")]
+    public GameObject gameOverPanel;
 
     private void Awake()
     {
@@ -54,6 +57,9 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody2D>().simulated = false;
         transform.Rotate(0f, 0f, 45f);
         animator.SetTrigger("Death");
+
+        GetComponent<PlayerMovement>().enabled = false;
+        gameOverPanel.SetActive(true);
     }
 
     public void OnPlayerDeathAnimationCallback()
