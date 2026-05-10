@@ -3,9 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Animator animator;
-
     public SpriteRenderer sr;
-
     public PlayerInvulnerable playerInvulnerable;
 
     [Tooltip("Please uncheck it on production")]
@@ -59,7 +57,12 @@ public class PlayerHealth : MonoBehaviour
         animator.SetTrigger("Death");
 
         GetComponent<PlayerMovement>().enabled = false;
-        gameOverPanel.SetActive(true);
+        
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+            Time.timeScale = 0f; 
+        }
     }
 
     public void OnPlayerDeathAnimationCallback()
