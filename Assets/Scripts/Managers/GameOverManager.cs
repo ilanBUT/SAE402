@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
+    [Header("UI Element")]
+    public GameObject gameOverPanel; 
+
     [Header("Listen to event channels")]
     public VoidEventChannel onPlayerDeath;
 
@@ -12,7 +15,12 @@ public class GameOverManager : MonoBehaviour
 
     public void OnGameOver()
     {
-        Debug.Log("<size=15><color=#FF0000><b>GameOver!</b></color></size>");
+        Debug.Log("<size=15><color=#FF0000><b>GameOver! Logiciel activé</b></color></size>");
+        
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 
     private void OnDisable()
