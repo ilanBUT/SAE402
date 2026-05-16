@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Broadcast event channels")]
     public VoidEventChannel onPlayerDeath;
+    public VoidEventChannel onPlayerTakeDamage;
     
     [Header("UI")]
     public GameObject gameOverPanel;
@@ -39,6 +40,8 @@ public class PlayerHealth : MonoBehaviour
         if (playerInvulnerable.isInvulnerable && damage < float.MaxValue) return;
 
         playerData.currentHealth -= damage;
+        onPlayerTakeDamage?.Raise();
+        
         if (playerData.currentHealth <= 0)
         {
             Die();
