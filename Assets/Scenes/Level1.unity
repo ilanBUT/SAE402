@@ -2916,7 +2916,7 @@ PrefabInstance:
     - target: {fileID: 4327952917441872136, guid: 92bac9f893f07004597c7c071c3c0d9a, type: 3}
       propertyPath: onLevelEnded
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: d8e3a95aa1cd7f048b049de7aec12a0c, type: 2}
     - target: {fileID: 4327952917441872136, guid: 92bac9f893f07004597c7c071c3c0d9a, type: 3}
       propertyPath: nextLevelName
       value: Level2
@@ -29569,7 +29569,7 @@ Transform:
   m_GameObject: {fileID: 802540118}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 281.84, y: 26.74, z: 0}
+  m_LocalPosition: {x: 281.37, y: 26.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29629,7 +29629,7 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 4.865082, y: -4.328682}
+  m_Offset: {x: 5.5871887, y: -4.328682}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -29639,7 +29639,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.730164, y: 8.890743}
+  m_Size: {x: 13.4122925, y: 8.890743}
   m_EdgeRadius: 0
 --- !u!1001 &803745067
 PrefabInstance:
